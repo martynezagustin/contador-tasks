@@ -1,0 +1,118 @@
+$azul-degrade: linear-gradient(to right, rgb(0, 0, 165), rgb(10, 10, 132));
+$negro-degrade: linear-gradient(to right, rgb(40, 40, 40), rgb(10, 10, 10));
+$negro: rgb(30,30,30);
+$ancho: 24%;
+
+.ancho-container {
+  width: $ancho;
+}
+
+.animacion-borrar {
+  animation-name: animacion-delete-task;
+  animation-duration: 3s;
+  animation-timing-function: ease-in;
+  animation-iteration-count: 1;
+
+  @keyframes animacion-delete-task {
+    0% {
+      opacity: 1;
+    }
+
+    50% {
+      opacity: 0.5;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+}
+
+* {
+  padding: 0%;
+  margin: 0%;
+}
+
+.body {
+  background: $azul-degrade;
+  font-family: "Golos Text", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1em;
+}
+
+.h2-container {
+  font-weight: 400;
+  color: white;
+  text-align: center;
+  margin:10px 0px 20px 0px;
+}
+
+.main {
+  max-width: 80%;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+input {
+  border-radius: 5px;
+  border: none;
+}
+
+.submit-button {
+  font-size: 1.7rem;
+  margin: 2px;
+  color: whitesmoke;
+}
+.submit-button:hover {
+  color: rgb(253, 92, 205);
+  transition: 1s all;
+}
+#send-tarea{
+  background: none;
+  border: none;
+}
+
+.container {
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.tarea-asignada {
+  border-radius: 10px;
+  color: $negro;
+  background-color: white;
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.button-cancel {
+  background-color: red;
+  color: white;
+  border-radius: 8px;
+}
+
+.lista-tasks {
+  padding-left: 0rem;
+}
+
+.icon-delete {
+  color: red;
+}
+
+@media (max-width: 576px) {
+  .form {
+    margin-bottom: 8px;
+  }
+}
