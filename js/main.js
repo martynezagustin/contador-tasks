@@ -61,11 +61,13 @@ function actualizarTareas() {
 
 
 function removerTarea(e) {
-    const taskToDelete = tareas.filter((tarea) => tarea.id === parseInt(e.target.dataset.id))
-    const index = tareas.indexOf(taskToDelete)
-    tareas.splice(index, 1)
-    localStorage.setItem("Tareas", JSON.stringify(tareas))
-    actualizarTareas()
+    const taskId = parseInt(e.target.dataset.id)
+    const index = tareas.findIndex((tarea) => tarea.id === taskId);
+    if(index !== -1){
+        tareas.splice(index, 1)
+        localStorage.setItem("Tareas", JSON.stringify(tareas))
+        actualizarTareas()
+    }
 }
 
 actualizarTareas()
