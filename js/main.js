@@ -4,13 +4,11 @@ const submitTarea = document.querySelector('#send-tarea')
 const listaTareas = document.querySelector('#lista-tasks')
 const main = document.querySelector('.main')
 
-
-
 let tareas = JSON.parse(localStorage.getItem('Tareas')) || []
 let id = 0
 
 function addTarea(id, tarea) {
-    const taskLi = `<li id="${id}" class="tarea-asignada"><input type="checkbox" name="" id="tarea-${id}">${tarea}<button class="p-2 button-cancel" type="submit">X</button></li>`
+    const taskLi = `"${id}${tarea}`
     listaTareas.insertAdjacentHTML("beforeend", taskLi)
 }
 
@@ -43,9 +41,10 @@ function actualizarTareas() {
             elemento.classList.add("tarea-asignada")
             elemento.classList.add("p-2")
             elemento.classList.add("mt-3")
-            elemento.innerHTML = `${tarea.nombreTarea}<i class="fa-sharp fa-solid fa-trash p-2 icon-delete" data-id=${id} id=${id}></i>`
+            elemento.innerHTML = `<i class="fa-regular fa-circle" data-id=${tarea.id}></i>${tarea.nombreTarea}<i class="fa-sharp fa-solid fa-trash p-2 icon-delete" data-id=${tarea.id} id=${id}></i>`
             listaTareas.append(elemento)
             const deleteIcon = document.querySelectorAll('.icon-delete')
+            const taskReady = document.querySelectorAll('.fa-circle')
             deleteIcon.forEach((boton) => {
                 boton.addEventListener("click", removerTarea)
                 boton.addEventListener("mouseover", () => 
@@ -53,6 +52,9 @@ function actualizarTareas() {
                 )
                 boton.addEventListener("mouseout", () => {
                     boton.style.color = "red"
+                })
+                taskReady.forEach((circulo) => {
+                    circulo.addEventListener("click", terminarTarea)
                 })
             })
         })
@@ -69,5 +71,16 @@ function removerTarea(e) {
         actualizarTareas()
     }
 }
+
+function terminarTarea(e){
+    const taskId = parseInt(e.target.dataset.id)
+    const tareaTerminada = tareas.find(tarea => tarea.id === taskId)
+    if(tareaTerminada !== -1){
+        console.log(tareaTerminada.nombreTarea)
+    } else {
+        alert("No se encontró la tarea")
+    }
+}
+
 
 actualizarTareas()

@@ -1,4 +1,4 @@
-$azul-degrade: linear-gradient(to right, rgb(0, 0, 165), rgb(10, 10, 132));
+$azul-degrade: linear-gradient(to right, rgb(0, 0, 165), rgb(135, 36, 216));
 $negro-degrade: linear-gradient(to right, rgb(40, 40, 40), rgb(10, 10, 10));
 $negro: rgb(30,30,30);
 $ancho: 24%;
@@ -40,7 +40,10 @@ $ancho: 24%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 1.1em;
+}
+
+p{
+  margin-bottom: 0rem;
 }
 
 .h2-container {
@@ -51,13 +54,14 @@ $ancho: 24%;
 }
 
 .main {
-  max-width: 80%;
   word-wrap: break-word;
-  word-break: break-all;
+  width: 400px;
+  max-width: 50%;
 }
 
 .form {
   display: flex;
+  max-width: 95%;
   justify-content: center;
 }
 
@@ -84,7 +88,6 @@ input {
   opacity: 0.9;
   display: flex;
   flex-direction: column;
-  width: 400px;
 }
 
 .tarea-asignada {
@@ -97,12 +100,25 @@ input {
   justify-content: space-between;
 }
 
+.tarea-asignada:hover{
+  background: linear-gradient(to left, whitesmoke, rgb(255, 223, 254));
+  transition: 1s all;
+}
+
 .button-cancel {
   background-color: red;
   color: white;
   border-radius: 8px;
+  font-size: 1.5em;
 }
 
+.fa-sharp{
+  font-size: 1.6em;
+}
+.fa-circle{
+  margin: 8px;
+  cursor: pointer;
+}
 .lista-tasks {
   padding-left: 0rem;
 }
@@ -111,8 +127,27 @@ input {
   color: red;
 }
 
+.tarea-completa{
+  text-decoration: line-through;
+}
+
 @media (max-width: 576px) {
   .form {
     margin-bottom: 8px;
+  }
+  .main{
+    max-width: 70%;
+  }
+  input{
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 372px) {
+  .main{
+    max-width: 100%;
+  }
+  .form{
+    justify-content: flex-start;
   }
 }
